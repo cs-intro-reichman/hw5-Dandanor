@@ -45,7 +45,7 @@ public class Wordle {
                 int idx = secret.indexOf(c);
                 if (idx!=-1){
                     resultRow[i]='Y';
-                    secret = removeChar(secret,idx);
+                    //secret = removeChar(secret,idx);
                 }
                 else{
                     resultRow[i]='_';
