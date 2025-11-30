@@ -32,20 +32,21 @@ public class Wordle {
     // Compute feedback for a single guess into resultRow.
     // G for exact match, Y if letter appears anywhere else, _ otherwise.
     public static void computeFeedback(String secret, String guess, char[] resultRow) {
+        String secrett=secret;
         for(int i = 0; i<5;i++){ //look for all the greens
             char c = guess.charAt(i);
-            if (c==secret.charAt(i)){
+            if (c==secrett.charAt(i)){
                 resultRow[i]='G';
-                secret = removeChar(secret,i);
+                secrett = removeChar(secrett,i);
             }
         }
         for (int i=0;i<5;i++){
             char c = guess.charAt(i);
             if(resultRow[i]!='G'){ //skip if it's already a G
-                int idx = secret.indexOf(c);
+                int idx = secrett.indexOf(c);
                 if (idx!=-1){
                     resultRow[i]='Y';
-                    //secret = removeChar(secret,idx);
+                    //secret = removeChar(secrett,idx);
                 }
                 else{
                     resultRow[i]='_';
@@ -143,10 +144,6 @@ public class Wordle {
             // Store guess and compute feedback
             // ... use storeGuess and computeFeedback
             storeGuess(guess,guesses,attempt);
-            char[] arr = new char[5];
-            for (int i=0;i<5;i++){
-                arr[i] = guesses[attempt][i];
-            }
             computeFeedback(secret,guess,results[attempt]);
 
             // Print board
