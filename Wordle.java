@@ -3,9 +3,15 @@ public class Wordle {
     // Reads all words from dictionary filename into a String array.
     public static String[] readDictionary(String filename) {
         In in = new In(filename);
-        String[] arr = new String[258];
+        int count = 0;
+        while(!in.isEmpty()){
+            in.readLine();
+            count++; 
+        }
+        In inp = new In(filename);
+        String[] arr = new String[count];
         for (int i=0;i<arr.length;i++){
-            arr[i] = in.readLine();
+            arr[i] = inp.readLine();
         }
         return arr;
     }
